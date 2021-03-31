@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Mission to Mars</title>
+  </head>
+
+  <body>
+    <div class="container">
+  
+      <div class="jumbotron text-center border-bottom">
+        <h1 class="font-weight-bold">Mission to Mars</h1>
+        <p><a class="btn btn-primary btn-md" href="/scrape" role="button">Get New Data</a></p>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-12">
+          <h2><u>Latest Mars News</u></h2>
+        </div>
+        
+      </div>
+    </br>
+      <div class="row">
+        <div class="col-md-12">
+          <h4>{{mars.news_title}}</h4>
+          <p>{{mars.news_p}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 border">
+          <h2 class=""><u>Featured Mars Image</u></h2> 
+          </br>
+          <img class="col-md-12 border" src="{{mars.featured_image_url}}" alt="Featured Mars Image">
+        </div>
+        <div class="col-md-4">
+          </br>
+          <div class="card">
+            <h3>Mars Facts</h3>
+              {{ mars.mars_facts | safe}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 offset-4">
+          <h2 class="align-items-center"><u>Mars Hemispheres</u></h2>  
+        </div>
+      </div>
+      </br>
+      <div class="row">       
+              {% for x in mars.hemisphere_image_urls %} 
+                <div class="col-6 border">
+                </br>
+                      <div>
+                        <img width="700 px" height="700 px" src="{{x.img_url | safe }}">
+                      </div>
+                      <div>
+                        <h4> {{x.name | safe }} </h4>  
+                      </div>
+                </div>
+              {% endfor %}
+      </div> 
+  
+  </div>
+  </body>
+    
+</html>  
+
